@@ -7,6 +7,7 @@ He is currently an undergraduate student in Microelectronics Science and Enginee
 #### Contact
 
 Email: milishengmin@outlook.com
+Email: milishengmin_@mail.scut.edu.cn
 
 #### Education
 B.Eng., Microelectronic Science and Engineering, South China University of Technology, 2023—2027.
