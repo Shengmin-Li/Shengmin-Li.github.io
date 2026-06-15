@@ -12,4 +12,4 @@ Email: milishengmin@outlook.com
 M.E., Microelectronic Science and Engineering, South China University of Technology, 2023—2027.
 
 #### Research Interests
-domain-specific accelerators; HW/SW co-optimization; processor microarchitecture; Computer System Architecture; Digital IC
+Domain-Specific accelerators; HW/SW Co-optimization; Processor Microarchitecture; Computer System Architecture; Digital IC
