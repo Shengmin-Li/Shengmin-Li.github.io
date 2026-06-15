@@ -17,6 +17,10 @@ sections:
     nav: HOME
     title: Shengmin Li&ensp;|&ensp;李晟民
     href: '#page-top' # Default to '#<id>' if not specified
+  - id: news
+    nav: NEWS
+    title: NEWS
+    icon: bi-newspaper
   - id: publications
     nav: PUBLICATIONS
     title: PUBLICATIONS

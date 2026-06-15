@@ -252,3 +252,175 @@ section .main-body{
         animation: none;
     }
 }
+
+#news,
+#publications {
+    background: #181925 !important;
+    color: #f4f7fb;
+}
+
+#news .container,
+#publications .container {
+    max-width: 1180px;
+}
+
+#news header h2,
+#publications header h2 {
+    color: #f4f7fb;
+    margin-bottom: 1.5rem;
+}
+
+#news .main-body,
+#publications .main-body {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.news-list {
+    display: grid;
+    gap: 1.15rem;
+    max-width: 980px;
+}
+
+.news-item {
+    display: grid;
+    grid-template-columns: 9rem minmax(0, 1fr);
+    gap: 1.5rem;
+    align-items: baseline;
+}
+
+.news-item time {
+    color: #aeb8c9;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.news-item p {
+    margin: 0;
+    color: #f7f2e8;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.publication-list {
+    display: grid;
+    gap: 1.4rem;
+}
+
+.publication-card {
+    display: grid;
+    grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
+    gap: 1.6rem;
+    padding: 1.35rem;
+    background: #24263d;
+    border: 1px solid rgba(66, 217, 224, 0.2);
+    border-radius: 8px;
+}
+
+.publication-card-featured {
+    border-color: #39d1db;
+}
+
+.publication-thumb {
+    display: block;
+    align-self: start;
+    overflow: hidden;
+    border-radius: 6px;
+    background: #eef2f7;
+    aspect-ratio: 16 / 9;
+}
+
+.publication-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.publication-content {
+    min-width: 0;
+}
+
+.publication-heading {
+    display: flex;
+    gap: 0.8rem;
+    align-items: flex-start;
+}
+
+.publication-tag {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 3.2rem;
+    min-height: 2rem;
+    padding: 0.2rem 0.65rem;
+    border-radius: 4px;
+    background: #e0b642;
+    color: #ffffff;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.publication-heading h3 {
+    margin: 0;
+    color: #f7f2e8;
+    font-family: "Mulish", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 1.28rem;
+    line-height: 1.45;
+    font-weight: 800;
+}
+
+.publication-authors,
+.publication-venue {
+    margin: 0.55rem 0 0;
+    color: #b2bdd1;
+    font-size: 1.02rem;
+}
+
+.publication-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 0.95rem;
+}
+
+.publication-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2rem;
+    padding: 0.25rem 0.7rem;
+    border: 1px solid #39d1db;
+    border-radius: 4px;
+    color: #39f0e6;
+    font-weight: 800;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.publication-links a:hover,
+.publication-links a:focus {
+    background: rgba(57, 209, 219, 0.14);
+    color: #ffffff;
+}
+
+@media screen and (max-width: 767px) {
+    .news-item {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+    }
+
+    .publication-card {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+
+    .publication-heading {
+        flex-wrap: wrap;
+        gap: 0.65rem;
+    }
+
+    .publication-heading h3 {
+        flex-basis: 100%;
+        font-size: 1.1rem;
+    }
+}
