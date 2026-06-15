@@ -14,6 +14,9 @@
     --button-text: #39f0e6;
     --journal-tag-bg: #e0b642;
     --conference-tag-bg: #2aa6a6;
+    --status-published-bg: #2f9e44;
+    --status-accepted-bg: #3b82f6;
+    --status-under-review-bg: #c92a2a;
     --h-title-color:#f4f7fb;
     --top-section-overlay: 0.52;
     --skeleton-base: #2b2d3e;
@@ -33,6 +36,9 @@
     --button-text: #057b85;
     --journal-tag-bg: #d7a72d;
     --conference-tag-bg: #148c8c;
+    --status-published-bg: #2b8a3e;
+    --status-accepted-bg: #2563eb;
+    --status-under-review-bg: #c92a2a;
     --h-title-color:#24315f;
     --skeleton-base: #e4e7eb;
     --skeleton-highlight: #f5f7fa;
@@ -582,13 +588,28 @@ section .main-body a {
     justify-content: center;
     min-height: 2rem;
     padding: 0.25rem 0.7rem;
-    border: 1px solid #d83a3a;
+    border: 1px solid var(--status-published-bg);
     border-radius: 4px;
-    background: #c92a2a;
+    background: var(--status-published-bg);
     color: #ffffff;
     font-weight: 800;
     line-height: 1.2;
     text-transform: uppercase;
+}
+
+.publication-card[data-status="accepted"] .publication-status {
+    border-color: var(--status-accepted-bg);
+    background: var(--status-accepted-bg);
+}
+
+.publication-card[data-status="under-review"] .publication-status {
+    border-color: var(--status-under-review-bg);
+    background: var(--status-under-review-bg);
+}
+
+.publication-card[data-status="published"] .publication-status {
+    border-color: var(--status-published-bg);
+    background: var(--status-published-bg);
 }
 
 .publication-kind {
