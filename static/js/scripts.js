@@ -385,6 +385,110 @@ function loadMarkdownSection(name) {
         .catch(error => console.log(error));
 }
 
+function initPublicationFilters() {
+    const publications = document.getElementById('publications-md');
+    const list = publications && publications.querySelector('.publication-list');
+    if (!publications || !list || publications.querySelector('.publication-controls')) {
+        return;
+    }
+
+    const controls = document.createElement('div');
+    const searchLabel = document.createElement('label');
+    const searchIcon = document.createElement('i');
+    const searchInput = document.createElement('input');
+    const filterGroups = document.createElement('div');
+    const typeFilters = document.createElement('div');
+    const statusFilters = document.createElement('div');
+    const empty = document.createElement('p');
+    const typeItems = [
+        { value: 'all', text: 'All' },
+        { value: 'journal', text: 'Journal' },
+        { value: 'conference', text: 'Conference' },
+    ];
+    const statusItems = [
+        { value: 'all', text: 'All Status' },
+        { value: 'published', text: 'Published' },
+        { value: 'accepted', text: 'Accepted' },
+        { value: 'under-review', text: 'Under Review' },
+    ];
+
+    controls.className = 'publication-controls';
+    searchLabel.className = 'publication-search';
+    searchLabel.setAttribute('aria-label', 'Search publications');
+    searchIcon.className = 'bi bi-search';
+    searchInput.type = 'search';
+    searchInput.placeholder = 'Search publications';
+    searchInput.autocomplete = 'off';
+
+    filterGroups.className = 'publication-filter-groups';
+    typeFilters.className = 'publication-filter';
+    typeFilters.setAttribute('aria-label', 'Publication type');
+    statusFilters.className = 'publication-filter';
+    statusFilters.setAttribute('aria-label', 'Publication status');
+
+    function appendFilterButton(group, item, dataName) {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = item.value === 'all' ? 'active' : '';
+        button.dataset[dataName] = item.value;
+        button.textContent = item.text;
+        group.appendChild(button);
+    }
+
+    typeItems.forEach((item) => appendFilterButton(typeFilters, item, 'category'));
+    statusItems.forEach((item) => appendFilterButton(statusFilters, item, 'status'));
+
+    empty.className = 'publication-empty';
+    empty.hidden = true;
+    empty.textContent = 'Nothing yet 😢';
+
+    searchLabel.appendChild(searchIcon);
+    searchLabel.appendChild(searchInput);
+    filterGroups.appendChild(typeFilters);
+    filterGroups.appendChild(statusFilters);
+    controls.appendChild(searchLabel);
+    controls.appendChild(filterGroups);
+    publications.insertBefore(controls, list);
+    publications.appendChild(empty);
+
+    function applyPublicationFilters() {
+        const query = searchInput.value.trim().toLowerCase();
+        const activeCategory = typeFilters.querySelector('button.active')?.dataset.category || 'all';
+        const activeStatus = statusFilters.querySelector('button.active')?.dataset.status || 'all';
+        const cards = [...list.querySelectorAll('.publication-card')];
+        let visibleCount = 0;
+
+        cards.forEach((card) => {
+            const category = card.dataset.category || 'journal';
+            const status = card.dataset.status || 'published';
+            const matchesCategory = activeCategory === 'all' || category === activeCategory;
+            const matchesStatus = activeStatus === 'all' || status === activeStatus;
+            const matchesQuery = !query || card.textContent.toLowerCase().includes(query);
+            const isVisible = matchesCategory && matchesStatus && matchesQuery;
+            card.hidden = !isVisible;
+            if (isVisible) {
+                visibleCount += 1;
+            }
+        });
+
+        empty.hidden = visibleCount !== 0;
+    }
+
+    filterGroups.addEventListener('click', (event) => {
+        const button = event.target.closest('button[data-category], button[data-status]');
+        if (!button) {
+            return;
+        }
+
+        const group = button.closest('.publication-filter');
+        group.querySelectorAll('button').forEach((item) => item.classList.toggle('active', item === button));
+        applyPublicationFilters();
+    });
+
+    searchInput.addEventListener('input', applyPublicationFilters);
+    applyPublicationFilters();
+}
+
 function markSiteReady() {
     document.body.classList.remove('site-loading');
     document.body.classList.add('site-ready');
@@ -407,6 +511,7 @@ window.addEventListener('DOMContentLoaded', event => {
 
             return Promise.all(getConfiguredSections(yml).map(loadMarkdownSection));
         })
+        .then(() => initPublicationFilters())
         .then(() => typesetMath())
         .catch(error => console.log(error))
         .finally(() => markSiteReady());

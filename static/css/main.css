@@ -379,6 +379,71 @@ section .main-body a {
     gap: 1.4rem;
 }
 
+.publication-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+}
+
+.publication-search {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    min-width: min(100%, 24rem);
+    min-height: 2.4rem;
+    padding: 0 0.85rem;
+    border: 1px solid var(--card-border);
+    border-radius: 6px;
+    background: var(--card-bg);
+    color: var(--text-muted);
+}
+
+.publication-search input {
+    width: 100%;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: var(--text-main);
+    font: inherit;
+}
+
+.publication-search input::placeholder {
+    color: var(--text-muted);
+}
+
+.publication-filter-groups {
+    display: grid;
+    gap: 0.55rem;
+    justify-items: end;
+}
+
+.publication-filter {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+}
+
+.publication-filter button {
+    min-height: 2.4rem;
+    padding: 0.25rem 0.85rem;
+    border: 1px solid var(--card-border);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--text-main);
+    font-weight: 800;
+}
+
+.publication-filter button:hover,
+.publication-filter button:focus,
+.publication-filter button.active {
+    border-color: var(--card-border-strong);
+    background: rgba(57, 209, 219, 0.14);
+    color: var(--button-text);
+}
+
 .publication-card {
     display: grid;
     grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
@@ -459,6 +524,7 @@ section .main-body a {
 .publication-links a {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     min-height: 2rem;
     padding: 0.25rem 0.7rem;
     border: 1px solid var(--card-border-strong);
@@ -469,10 +535,31 @@ section .main-body a {
     text-transform: uppercase;
 }
 
+.publication-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2rem;
+    padding: 0.25rem 0.7rem;
+    border: 1px solid #d83a3a;
+    border-radius: 4px;
+    background: #c92a2a;
+    color: #ffffff;
+    font-weight: 800;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
 .publication-links a:hover,
 .publication-links a:focus {
     background: rgba(57, 209, 219, 0.14);
     color: var(--text-main);
+}
+
+.publication-empty {
+    margin: 1.25rem 0 0;
+    color: var(--text-muted);
+    font-weight: 700;
 }
 
 @media screen and (max-width: 767px) {
@@ -484,6 +571,21 @@ section .main-body a {
     .publication-card {
         grid-template-columns: 1fr;
         padding: 1rem;
+    }
+
+    .publication-controls,
+    .publication-search,
+    .publication-filter-groups,
+    .publication-filter {
+        width: 100%;
+    }
+
+    .publication-filter-groups {
+        justify-items: stretch;
+    }
+
+    .publication-filter button {
+        flex: 1 1 auto;
     }
 
     .publication-heading {
