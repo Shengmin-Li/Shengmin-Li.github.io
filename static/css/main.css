@@ -12,7 +12,8 @@
     --text-muted: #aeb8c9;
     --text-warm: #f7f2e8;
     --button-text: #39f0e6;
-    --tag-bg: #e0b642;
+    --journal-tag-bg: #e0b642;
+    --conference-tag-bg: #2aa6a6;
     --h-title-color:#f4f7fb;
     --top-section-overlay: 0.52;
     --skeleton-base: #2b2d3e;
@@ -30,7 +31,8 @@
     --text-muted: #697386;
     --text-warm: #18202a;
     --button-text: #057b85;
-    --tag-bg: #d7a72d;
+    --journal-tag-bg: #d7a72d;
+    --conference-tag-bg: #148c8c;
     --h-title-color:#24315f;
     --skeleton-base: #e4e7eb;
     --skeleton-highlight: #f5f7fa;
@@ -490,6 +492,15 @@ section .main-body a {
     object-fit: contain;
 }
 
+.publication-thumb-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-weight: 800;
+    letter-spacing: 0;
+}
+
 .publication-content {
     min-width: 0;
 }
@@ -509,10 +520,22 @@ section .main-body a {
     min-height: 2rem;
     padding: 0.2rem 0.65rem;
     border-radius: 4px;
-    background: var(--tag-bg);
+    background: var(--journal-tag-bg);
     color: #ffffff;
     font-weight: 800;
     line-height: 1;
+}
+
+.publication-card[data-category="conference"] .publication-tag,
+.publication-card[data-category="conference"] .publication-kind {
+    border-color: var(--conference-tag-bg);
+    background: var(--conference-tag-bg);
+}
+
+.publication-card[data-category="journal"] .publication-tag,
+.publication-card[data-category="journal"] .publication-kind {
+    border-color: var(--journal-tag-bg);
+    background: var(--journal-tag-bg);
 }
 
 .publication-heading h3 {
@@ -569,8 +592,8 @@ section .main-body a {
 }
 
 .publication-kind {
-    border-color: var(--tag-bg);
-    background: var(--tag-bg);
+    border-color: var(--journal-tag-bg);
+    background: var(--journal-tag-bg);
     color: #ffffff;
 }
 

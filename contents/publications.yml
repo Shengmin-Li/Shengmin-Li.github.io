@@ -1,0 +1,18 @@
+# Add new publications by copying one item below and editing the fields.
+# type: journal | conference
+# status: published | accepted | under-review
+# links are optional; use labels such as Paper, Code, DOI, Project.
+publications:
+  - title: "FlexVector: A SpMM Vector Processor with Flexible VRF for GCNs on Varying-Sparsity Graphs"
+    authors: "B. Li, <strong>S. Li</strong>*, X. Shi, E. Yao, F. Catthoor, and S. Yang"
+    venue: "IEEE Transactions on Computers"
+    year: 2026
+    venue_tag: "TC"
+    type: journal
+    status: published
+    image: "static/assets/img/publications/flexvector-architecture.png"
+    image_alt: "FlexVector architecture thumbnail"
+    featured: true
+    links:
+      - label: Paper
+        href: "https://arxiv.org/abs/2604.10113"
