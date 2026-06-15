@@ -1,16 +1,15 @@
 
 
-[![senli1073](https://img.shields.io/badge/senli1073-github-blue?logo=github)](https://github.com/senli1073)
+[![ShengminLi](https://img.shields.io/badge/ShengminLi-github-blue?logo=github)](https://github.com/Shengmin-Li)
 
-He is currently a Fellow in the Department of Earth and Planetary Sciences (EPS) at Harvard University.
+He is currently an undergraduate student in Microelectronics Science and Engineering at South China University of Technology, Guangzhou,China.
 
 #### Contact
 
-Email: user[at]fas.harvard.edu
+Email: milishengmin@outlook.com
 
 #### Education
-M.E., Computer Science and Technology, China University of Mining and Technology, 2022—2025.\
-B.E., Data Science and Big Data Technology, China University of Mining and Technology, 2018—2022.
+M.E., Microelectronic Science and Engineering, South China University of Technology, 2023—2027.
 
 #### Research Interests
-Machine Learning for Seismology; Foundation Model; Observational Seismology; Microseismic Monitoring
+domain-specific accelerators; HW/SW co-optimization; processor microarchitecture; Computer System Architecture; Digital IC
