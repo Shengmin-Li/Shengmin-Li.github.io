@@ -1,7 +1,7 @@
 <div class="publication-list">
   <article class="publication-card publication-card-featured">
     <a class="publication-thumb" href="https://arxiv.org/abs/2604.10113" target="_blank" rel="noopener">
-      <img src="static/assets/img/publications/flexvector.svg" alt="FlexVector architecture thumbnail">
+      <img src="static/assets/img/publications/flexvector-architecture.png" alt="FlexVector architecture thumbnail">
     </a>
     <div class="publication-content">
       <div class="publication-heading">

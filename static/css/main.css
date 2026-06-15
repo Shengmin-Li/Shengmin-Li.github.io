@@ -2,18 +2,47 @@
 
 
 :root{
-    --h-title-color:#3948d2;
+    --site-bg: #181925;
+    --section-bg: #181925;
+    --nav-bg: #12141f;
+    --card-bg: #24263d;
+    --card-border: rgba(66, 217, 224, 0.24);
+    --card-border-strong: #39d1db;
+    --text-main: #f4f7fb;
+    --text-muted: #aeb8c9;
+    --text-warm: #f7f2e8;
+    --button-text: #39f0e6;
+    --tag-bg: #e0b642;
+    --h-title-color:#f4f7fb;
     --top-section-overlay: 0.52;
+    --skeleton-base: #2b2d3e;
+    --skeleton-highlight: #3a3d51;
+}
+
+:root[data-theme="light"] {
+    --site-bg: #f5f7fb;
+    --section-bg: #f5f7fb;
+    --nav-bg: #ffffff;
+    --card-bg: #ffffff;
+    --card-border: rgba(30, 112, 133, 0.2);
+    --card-border-strong: #1b9aaa;
+    --text-main: #1f2937;
+    --text-muted: #697386;
+    --text-warm: #18202a;
+    --button-text: #057b85;
+    --tag-bg: #d7a72d;
+    --h-title-color:#24315f;
     --skeleton-base: #e4e7eb;
     --skeleton-highlight: #f5f7fa;
 }
 
 body {
-    background: #ffffff;
+    background: var(--site-bg);
+    color: var(--text-main);
 }
 
 .header {
-    border-bottom: solid 2px var(--bs-blue);
+    border-bottom: solid 2px var(--card-border-strong);
     z-index: 10000;
 }
 
@@ -25,7 +54,7 @@ body {
     left: 0;
     z-index: 8000;
     overflow: auto;
-    background: #ffffff;
+    background: var(--section-bg);
     opacity: 1;
     visibility: visible;
     pointer-events: none;
@@ -52,7 +81,7 @@ body {
     position: absolute;
     inset: 0;
     transform: translateX(-100%);
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.58), transparent);
+    background: linear-gradient(90deg, transparent, var(--skeleton-highlight), transparent);
     animation: skeleton-shimmer 1450ms ease-in-out infinite;
 }
 
@@ -61,11 +90,11 @@ body {
 }
 
 .skeleton-section-light {
-    background: linear-gradient(45deg, #fcfcfc, #ffffff);
+    background: var(--section-bg);
 }
 
 .skeleton-section-gray {
-    background: linear-gradient(45deg, #f0f0f0, #f1f1f1);
+    background: var(--section-bg);
 }
 
 .skeleton-section-title {
@@ -98,7 +127,8 @@ body {
 }
 
 .bg-bottom {
-    background-color: var(--h-title-color);
+    background-color: var(--nav-bg);
+    border-top: 1px solid var(--card-border);
 }
 
 .top-section {
@@ -184,11 +214,11 @@ section .main-body{
 
 
 .bg-gradient-primary-to-secondary-light {
-    background: linear-gradient(45deg, #fcfcfc, #ffffff) !important;
+    background: var(--section-bg) !important;
 }
 
 .bg-gradient-primary-to-secondary-gray {
-    background: linear-gradient(45deg, #f0f0f0, #f1f1f1) !important;
+    background: var(--section-bg) !important;
 }
 
 
@@ -238,6 +268,53 @@ section .main-body{
     }
 }
 
+#mainNav {
+    background-color: var(--nav-bg);
+}
+
+#mainNav .navbar-brand,
+#mainNav .navbar-nav .nav-item .nav-link {
+    color: var(--text-main);
+}
+
+#mainNav .navbar-brand:hover,
+#mainNav .navbar-brand:active,
+#mainNav .navbar-nav .nav-item .nav-link:hover,
+#mainNav .navbar-nav .nav-item .nav-link.active {
+    color: var(--card-border-strong);
+}
+
+#mainNav .navbar-toggler {
+    border-color: var(--card-border);
+    color: var(--text-main);
+}
+
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.35rem;
+    height: 2.35rem;
+    border: 1px solid var(--card-border);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-main);
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus {
+    border-color: var(--card-border-strong);
+    color: var(--card-border-strong);
+}
+
+section {
+    color: var(--text-main);
+}
+
+section .main-body a {
+    color: var(--button-text);
+}
+
 @media (prefers-reduced-motion: reduce) {
     .top-section-bg {
         transition: none;
@@ -255,8 +332,8 @@ section .main-body{
 
 #news,
 #publications {
-    background: #181925 !important;
-    color: #f4f7fb;
+    background: var(--section-bg) !important;
+    color: var(--text-main);
 }
 
 #news .container,
@@ -266,7 +343,7 @@ section .main-body{
 
 #news header h2,
 #publications header h2 {
-    color: #f4f7fb;
+    color: var(--h-title-color);
     margin-bottom: 1.5rem;
 }
 
@@ -290,14 +367,14 @@ section .main-body{
 }
 
 .news-item time {
-    color: #aeb8c9;
+    color: var(--text-muted);
     font-weight: 700;
     white-space: nowrap;
 }
 
 .news-item p {
     margin: 0;
-    color: #f7f2e8;
+    color: var(--text-warm);
     font-size: 1.1rem;
     font-weight: 600;
 }
@@ -312,13 +389,13 @@ section .main-body{
     grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
     gap: 1.6rem;
     padding: 1.35rem;
-    background: #24263d;
-    border: 1px solid rgba(66, 217, 224, 0.2);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
     border-radius: 8px;
 }
 
 .publication-card-featured {
-    border-color: #39d1db;
+    border-color: var(--card-border-strong);
 }
 
 .publication-thumb {
@@ -326,14 +403,14 @@ section .main-body{
     align-self: start;
     overflow: hidden;
     border-radius: 6px;
-    background: #eef2f7;
-    aspect-ratio: 16 / 9;
+    background: #ffffff;
+    aspect-ratio: 2.55 / 1;
 }
 
 .publication-thumb img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .publication-content {
@@ -355,7 +432,7 @@ section .main-body{
     min-height: 2rem;
     padding: 0.2rem 0.65rem;
     border-radius: 4px;
-    background: #e0b642;
+    background: var(--tag-bg);
     color: #ffffff;
     font-weight: 800;
     line-height: 1;
@@ -363,7 +440,7 @@ section .main-body{
 
 .publication-heading h3 {
     margin: 0;
-    color: #f7f2e8;
+    color: var(--text-warm);
     font-family: "Mulish", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-size: 1.28rem;
     line-height: 1.45;
@@ -373,7 +450,7 @@ section .main-body{
 .publication-authors,
 .publication-venue {
     margin: 0.55rem 0 0;
-    color: #b2bdd1;
+    color: var(--text-muted);
     font-size: 1.02rem;
 }
 
@@ -389,9 +466,9 @@ section .main-body{
     align-items: center;
     min-height: 2rem;
     padding: 0.25rem 0.7rem;
-    border: 1px solid #39d1db;
+    border: 1px solid var(--card-border-strong);
     border-radius: 4px;
-    color: #39f0e6;
+    color: var(--button-text);
     font-weight: 800;
     text-decoration: none;
     text-transform: uppercase;
@@ -400,7 +477,7 @@ section .main-body{
 .publication-links a:hover,
 .publication-links a:focus {
     background: rgba(57, 209, 219, 0.14);
-    color: #ffffff;
+    color: var(--text-main);
 }
 
 @media screen and (max-width: 767px) {

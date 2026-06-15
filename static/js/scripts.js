@@ -4,6 +4,67 @@ const config_file = 'config.yml'
 
 const allowedUrlProtocols = ['http:', 'https:', 'mailto:', 'tel:'];
 const configOnlyKeys = ['nav', 'sections', 'backgrounds', 'background-interval-ms', 'background-overlay'];
+const themeStorageKey = 'homepage-theme';
+
+function getStoredTheme() {
+    try {
+        const theme = window.localStorage && window.localStorage.getItem(themeStorageKey);
+        return ['dark', 'light'].includes(theme) ? theme : null;
+    } catch {
+        return null;
+    }
+}
+
+function getPreferredTheme() {
+    return getStoredTheme() || 'dark';
+}
+
+function applyTheme(theme) {
+    const nextTheme = theme === 'light' ? 'light' : 'dark';
+
+    if (document.documentElement) {
+        document.documentElement.setAttribute('data-theme', nextTheme);
+    }
+
+    if (typeof document.getElementById !== 'function') {
+        return;
+    }
+
+    const toggle = document.getElementById('theme-toggle');
+    if (!toggle) {
+        return;
+    }
+
+    const icon = toggle.querySelector('i');
+    const isDark = nextTheme === 'dark';
+    toggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+    toggle.title = isDark ? 'Switch to light theme' : 'Switch to dark theme';
+
+    if (icon) {
+        icon.className = isDark ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
+    }
+}
+
+function initThemeToggle() {
+    const toggle = document.getElementById('theme-toggle');
+    if (!toggle) {
+        return;
+    }
+
+    applyTheme(getPreferredTheme());
+    toggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+        const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        try {
+            window.localStorage.setItem(themeStorageKey, nextTheme);
+        } catch {
+            // Theme switching should still work if storage is unavailable.
+        }
+        applyTheme(nextTheme);
+    });
+}
+
+applyTheme(getPreferredTheme());
 
 function stringifyValue(value) {
     return value == null ? '' : value.toString();
@@ -331,6 +392,7 @@ function markSiteReady() {
 
 window.addEventListener('DOMContentLoaded', event => {
     marked.use({ mangle: false, headerIds: false });
+    initThemeToggle();
 
     loadConfig()
         .then((yml) => {
