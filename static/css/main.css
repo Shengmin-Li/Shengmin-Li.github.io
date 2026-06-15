@@ -336,11 +336,6 @@ section .main-body a {
     color: var(--text-main);
 }
 
-#news .container,
-#publications .container {
-    max-width: 1180px;
-}
-
 #news header h2,
 #publications header h2 {
     color: var(--h-title-color);
