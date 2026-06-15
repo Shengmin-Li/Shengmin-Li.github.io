@@ -323,6 +323,12 @@ section .main-body a {
     color: var(--button-text);
 }
 
+section .main-body strong,
+section .main-body b {
+    color: var(--text-main);
+    font-weight: 900;
+}
+
 @media (prefers-reduced-motion: reduce) {
     .top-section-bg {
         transition: none;
@@ -558,6 +564,12 @@ section .main-body a {
     margin: 0.55rem 0 0;
     color: var(--text-muted);
     font-size: 1.02rem;
+}
+
+.publication-authors strong,
+.publication-authors b {
+    color: var(--text-warm);
+    font-weight: 900;
 }
 
 .publication-links {
