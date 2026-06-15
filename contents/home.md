@@ -9,7 +9,8 @@ He is currently an undergraduate student in Microelectronics Science and Enginee
 Email: milishengmin@outlook.com
 
 #### Education
-M.E., Microelectronic Science and Engineering, South China University of Technology, 2023—2027.
-
+B.Eng., Microelectronic Science and Engineering, South China University of Technology, 2023—2027.
+- GPA:3.11/4
+- CET6:619
 #### Research Interests
 Domain-Specific accelerators; HW/SW Co-optimization; Processor Microarchitecture; Computer System Architecture; Digital IC
