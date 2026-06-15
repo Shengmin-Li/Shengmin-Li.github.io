@@ -535,6 +535,7 @@ section .main-body a {
     text-transform: uppercase;
 }
 
+.publication-kind,
 .publication-status {
     display: inline-flex;
     align-items: center;
@@ -548,6 +549,12 @@ section .main-body a {
     font-weight: 800;
     line-height: 1.2;
     text-transform: uppercase;
+}
+
+.publication-kind {
+    border-color: var(--tag-bg);
+    background: var(--tag-bg);
+    color: #ffffff;
 }
 
 .publication-links a:hover,

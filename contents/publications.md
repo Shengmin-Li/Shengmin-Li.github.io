@@ -11,6 +11,7 @@
       <p class="publication-authors">B. Li, <strong>S. Li</strong>*, X. Shi, E. Yao, F. Catthoor, and S. Yang</p>
       <p class="publication-venue"><strong>IEEE Transactions on Computers</strong>, 2026</p>
       <div class="publication-links">
+        <span class="publication-kind">Journal</span>
         <span class="publication-status">Under Review</span>
         <a href="https://arxiv.org/abs/2604.10113" target="_blank" rel="noopener">Paper</a>
       </div>
