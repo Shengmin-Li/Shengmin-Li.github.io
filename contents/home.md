@@ -14,4 +14,10 @@ B.Eng., Microelectronic Science and Engineering, South China University of Techn
 - GPA:3.11/4
 - CET6:619
 #### Research Interests
-Domain-Specific accelerators; HW/SW Co-optimization; Processor Microarchitecture; Computer System Architecture; Digital IC
+<div class="research-tags">
+  <span>Domain-Specific Accelerators</span>
+  <span>HW/SW Co-optimization</span>
+  <span>Processor Microarchitecture</span>
+  <span>Computer System Architecture</span>
+  <span>Digital IC</span>
+</div>

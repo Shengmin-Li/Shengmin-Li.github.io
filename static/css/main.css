@@ -329,6 +329,27 @@ section .main-body b {
     font-weight: 900;
 }
 
+.research-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 0.7rem;
+}
+
+.research-tags span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2rem;
+    padding: 0.25rem 0.75rem;
+    border: 1px solid var(--card-border);
+    border-radius: 999px;
+    background: var(--card-bg);
+    color: var(--text-warm);
+    font-size: 0.98rem;
+    font-weight: 800;
+    line-height: 1.25;
+}
+
 @media (prefers-reduced-motion: reduce) {
     .top-section-bg {
         transition: none;
