@@ -11,8 +11,8 @@ He is currently an undergraduate student in Microelectronics Science and Enginee
 
 #### Education
 B.Eng., Microelectronic Science and Engineering, South China University of Technology, 2023—2027.
-- GPA:3.11/4
-- CET6:619
+- GPA: 3.11/4        CET6: 619
+
 #### Research Interests
 <div class="research-tags">
   <span>Domain-Specific Accelerators</span>
