@@ -336,7 +336,7 @@ section .main-body b {
 .education-list {
     display: grid;
     gap: 1rem;
-    margin-top: 0.85rem;
+    margin: 0.85rem 0 2rem;
 }
 
 .education-card {
