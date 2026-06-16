@@ -1,6 +1,7 @@
 
 const content_dir = 'contents/'
 const config_file = 'config.yml'
+const news_file = 'news.yml'
 const publications_file = 'publications.yml'
 
 const allowedUrlProtocols = ['http:', 'https:', 'mailto:', 'tel:'];
@@ -413,6 +414,58 @@ function loadMarkdownSection(name) {
         .catch(error => console.log(error));
 }
 
+function appendInlineHtml(element, html) {
+    element.innerHTML = sanitizeInlineHtml(html || '');
+}
+
+function createNewsItem(news) {
+    const item = document.createElement('div');
+    const date = document.createElement('time');
+    const text = document.createElement('p');
+
+    item.className = 'news-item';
+    date.textContent = news.date || '';
+    appendInlineHtml(text, news.text || '');
+
+    item.appendChild(date);
+    item.appendChild(text);
+    return item;
+}
+
+function renderNews(items) {
+    const root = document.getElementById('news-list-root') || document.getElementById('news-md');
+    if (!root || !Array.isArray(items)) {
+        return;
+    }
+
+    const list = document.createElement('div');
+    list.className = 'news-list';
+
+    items.forEach((item) => {
+        list.appendChild(createNewsItem(item || {}));
+    });
+
+    root.replaceChildren(list);
+}
+
+function loadNewsData() {
+    return fetch(content_dir + news_file)
+        .then(response => {
+            if (!response.ok) {
+                return null;
+            }
+            return response.text();
+        })
+        .then(text => {
+            if (!text) {
+                return;
+            }
+            const data = jsyaml.load(text) || {};
+            renderNews(data.news || []);
+        })
+        .catch(error => console.log(error));
+}
+
 function formatPublicationType(type) {
     return type === 'conference' ? 'Conference' : 'Journal';
 }
@@ -687,6 +740,7 @@ window.addEventListener('DOMContentLoaded', event => {
 
             return Promise.all(getConfiguredSections(yml).map(loadMarkdownSection));
         })
+        .then(() => loadNewsData())
         .then(() => loadPublicationsData())
         .then(() => initPublicationFilters())
         .then(() => typesetMath())

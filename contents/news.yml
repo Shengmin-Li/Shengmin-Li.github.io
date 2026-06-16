@@ -1,0 +1,7 @@
+# Add new news items by copying one item below and editing the fields.
+# The text field supports simple inline HTML such as <strong>...</strong>.
+news:
+  - date: "Apr 2026"
+    text: "Preprint available on arXiv: <strong>FlexVector</strong>, a SpMM vector processor for GCNs on varying-sparsity graphs."
+  - date: "2025"
+    text: "Won Third Prize, FPGA Track, National College Student Embedded Chip and System Design Competition."
