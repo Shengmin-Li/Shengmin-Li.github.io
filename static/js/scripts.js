@@ -506,9 +506,64 @@ function appendPublicationLink(container, link) {
     container.appendChild(anchor);
 }
 
+function ensureImagePreview() {
+    let preview = document.getElementById('image-preview');
+    if (preview) {
+        return preview;
+    }
+
+    preview = document.createElement('div');
+    const button = document.createElement('button');
+    const image = document.createElement('img');
+
+    preview.id = 'image-preview';
+    preview.className = 'image-preview';
+    preview.hidden = true;
+    button.className = 'image-preview-close';
+    button.type = 'button';
+    button.setAttribute('aria-label', 'Close image preview');
+    button.textContent = '×';
+    image.alt = '';
+
+    button.addEventListener('click', closeImagePreview);
+    preview.addEventListener('click', (event) => {
+        if (event.target === preview) {
+            closeImagePreview();
+        }
+    });
+
+    preview.appendChild(button);
+    preview.appendChild(image);
+    document.body.appendChild(preview);
+    return preview;
+}
+
+function openImagePreview(src, alt) {
+    if (!src || !isSafeUrl(src)) {
+        return;
+    }
+
+    const preview = ensureImagePreview();
+    const image = preview.querySelector('img');
+    image.src = src;
+    image.alt = alt || 'Publication image preview';
+    preview.hidden = false;
+    document.body.classList.add('preview-open');
+}
+
+function closeImagePreview() {
+    const preview = document.getElementById('image-preview');
+    if (!preview) {
+        return;
+    }
+
+    preview.hidden = true;
+    document.body.classList.remove('preview-open');
+}
+
 function createPublicationCard(publication) {
     const card = document.createElement('article');
-    const thumb = document.createElement(publication.links && publication.links[0] && publication.links[0].href ? 'a' : 'div');
+    const thumb = document.createElement(publication.image ? 'button' : 'div');
     const content = document.createElement('div');
     const heading = document.createElement('div');
     const title = document.createElement('h3');
@@ -523,10 +578,9 @@ function createPublicationCard(publication) {
     card.dataset.status = status;
 
     thumb.className = 'publication-thumb';
-    if (thumb instanceof HTMLAnchorElement && isSafeUrl(publication.links[0].href)) {
-        thumb.href = publication.links[0].href;
-        thumb.target = '_blank';
-        thumb.rel = 'noopener';
+    if (thumb instanceof HTMLButtonElement) {
+        thumb.type = 'button';
+        thumb.setAttribute('aria-label', 'Open publication image preview');
     }
 
     if (publication.image && isSafeUrl(publication.image)) {
@@ -534,6 +588,7 @@ function createPublicationCard(publication) {
         image.src = publication.image;
         image.alt = publication.image_alt || publication.title || 'Publication thumbnail';
         thumb.appendChild(image);
+        thumb.addEventListener('click', () => openImagePreview(publication.image, image.alt));
     } else {
         thumb.classList.add('publication-thumb-placeholder');
         thumb.textContent = publication.venue_tag || formatPublicationType(category);
@@ -717,6 +772,12 @@ function initPublicationFilters() {
     searchInput.addEventListener('input', applyPublicationFilters);
     applyPublicationFilters();
 }
+
+window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+        closeImagePreview();
+    }
+});
 
 function markSiteReady() {
     document.body.classList.remove('site-loading');
