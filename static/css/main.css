@@ -385,7 +385,7 @@ section .main-body b {
     font-weight: 900;
 }
 
-.education-school {
+.education-major {
     margin: 0.45rem 0 0;
     color: var(--text-muted);
     font-size: 1rem;

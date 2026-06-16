@@ -14,8 +14,8 @@ He is currently an undergraduate student in Microelectronics Science and Enginee
   <article class="education-card">
     <div class="education-badge">B.Eng.</div>
     <div class="education-content">
-      <h5>Microelectronic Science and Engineering</h5>
-      <p class="education-school">South China University of Technology</p>
+      <h5>South China University of Technology</h5>
+      <p class="education-major">Microelectronic Science and Engineering</p>
       <div class="education-meta">
         <span>2023-2027</span>
         <span>GPA: 3.11/4</span>
