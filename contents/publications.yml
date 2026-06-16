@@ -4,7 +4,7 @@
 # links are optional; use labels such as Paper, Code, DOI, Project.
 publications:
   - title: "FlexVector: A SpMM Vector Processor with Flexible VRF for GCNs on Varying-Sparsity Graphs"
-    authors: "B. Li, <strong>S. Li</strong>*, X. Shi, E. Yao, F. Catthoor, and S. Yang"
+    authors: "B. Li<sup>*</sup>, <strong>S. Li</strong><sup>*</sup>, X. Shi, E. Yao, F. Catthoor, and S. Yang"
     venue: "IEEE Transactions on Computers"
     year: 2026
     venue_tag: "TC"
