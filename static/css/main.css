@@ -333,6 +333,86 @@ section .main-body b {
     font-weight: 900;
 }
 
+.education-list {
+    display: grid;
+    gap: 1rem;
+    margin-top: 0.85rem;
+}
+
+.education-card {
+    display: grid;
+    grid-template-columns: 6.5rem minmax(0, 1fr);
+    gap: 1.15rem;
+    align-items: start;
+    padding: 1.15rem 1.2rem;
+    background: var(--card-bg);
+    border: 1px solid transparent;
+    border-radius: 8px;
+    transition: border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+.education-card:hover,
+.education-card:focus-within {
+    border-color: var(--card-border-strong);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14);
+    transform: translateY(-1px);
+}
+
+.education-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2rem;
+    padding: 0.25rem 0.7rem;
+    border-radius: 4px;
+    background: var(--conference-tag-bg);
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.education-content {
+    min-width: 0;
+}
+
+.education-content h5 {
+    margin: 0;
+    color: var(--text-warm);
+    font-family: "Mulish", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 1.18rem;
+    line-height: 1.45;
+    font-weight: 900;
+}
+
+.education-school {
+    margin: 0.45rem 0 0;
+    color: var(--text-muted);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.45;
+}
+
+.education-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-top: 0.75rem;
+}
+
+.education-meta span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.85rem;
+    padding: 0.2rem 0.65rem;
+    border: 1px solid var(--card-border);
+    border-radius: 4px;
+    color: var(--text-warm);
+    font-size: 0.92rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
 .research-tags {
     display: flex;
     flex-wrap: wrap;
@@ -729,6 +809,11 @@ button.publication-thumb:focus {
     }
 
     .publication-card {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+
+    .education-card {
         grid-template-columns: 1fr;
         padding: 1rem;
     }
