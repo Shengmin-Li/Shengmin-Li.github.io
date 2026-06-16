@@ -1,0 +1,10 @@
+# Add new education items by copying one item below and editing the fields.
+# meta is optional and renders as small tags.
+education:
+  - degree: "B.Eng."
+    institution: "South China University of Technology"
+    major: "Microelectronic Science and Engineering"
+    meta:
+      - "2023-2027"
+      - "GPA: 3.11/4"
+      - "CET6: 619"

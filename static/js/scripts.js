@@ -3,6 +3,7 @@ const content_dir = 'contents/'
 const config_file = 'config.yml'
 const news_file = 'news.yml'
 const publications_file = 'publications.yml'
+const education_file = 'education.yml'
 
 const allowedUrlProtocols = ['http:', 'https:', 'mailto:', 'tel:'];
 const configOnlyKeys = ['nav', 'sections', 'backgrounds', 'background-interval-ms', 'background-overlay'];
@@ -418,6 +419,80 @@ function appendInlineHtml(element, html) {
     element.innerHTML = sanitizeInlineHtml(html || '');
 }
 
+function createEducationCard(education) {
+    const card = document.createElement('article');
+    const badge = document.createElement('div');
+    const content = document.createElement('div');
+    const institution = document.createElement('h5');
+    const major = document.createElement('p');
+    const meta = document.createElement('div');
+
+    card.className = 'education-card';
+    badge.className = 'education-badge';
+    content.className = 'education-content';
+    major.className = 'education-major';
+    meta.className = 'education-meta';
+
+    badge.textContent = education.degree || '';
+    institution.textContent = education.institution || 'Institution';
+    major.textContent = education.major || '';
+
+    (Array.isArray(education.meta) ? education.meta : []).forEach((item) => {
+        if (!item) {
+            return;
+        }
+
+        const metaItem = document.createElement('span');
+        metaItem.textContent = item;
+        meta.appendChild(metaItem);
+    });
+
+    content.appendChild(institution);
+    if (major.textContent.trim()) {
+        content.appendChild(major);
+    }
+    if (meta.children.length > 0) {
+        content.appendChild(meta);
+    }
+    card.appendChild(badge);
+    card.appendChild(content);
+    return card;
+}
+
+function renderEducation(items) {
+    const root = document.getElementById('education-list-root');
+    if (!root || !Array.isArray(items)) {
+        return;
+    }
+
+    const list = document.createElement('div');
+    list.className = 'education-list';
+
+    items.forEach((item) => {
+        list.appendChild(createEducationCard(item || {}));
+    });
+
+    root.replaceChildren(list);
+}
+
+function loadEducationData() {
+    return fetch(content_dir + education_file)
+        .then(response => {
+            if (!response.ok) {
+                return null;
+            }
+            return response.text();
+        })
+        .then(text => {
+            if (!text) {
+                return;
+            }
+            const data = jsyaml.load(text) || {};
+            renderEducation(data.education || []);
+        })
+        .catch(error => console.log(error));
+}
+
 function createNewsItem(news) {
     const item = document.createElement('div');
     const date = document.createElement('time');
@@ -801,6 +876,7 @@ window.addEventListener('DOMContentLoaded', event => {
 
             return Promise.all(getConfiguredSections(yml).map(loadMarkdownSection));
         })
+        .then(() => loadEducationData())
         .then(() => loadNewsData())
         .then(() => loadPublicationsData())
         .then(() => initPublicationFilters())

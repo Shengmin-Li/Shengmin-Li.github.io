@@ -10,20 +10,7 @@ He is currently an undergraduate student in Microelectronics Science and Enginee
 - Email: milishengmin_@mail.scut.edu.cn
 
 #### Education
-<div class="education-list">
-  <article class="education-card">
-    <div class="education-badge">B.Eng.</div>
-    <div class="education-content">
-      <h5>South China University of Technology</h5>
-      <p class="education-major">Microelectronic Science and Engineering</p>
-      <div class="education-meta">
-        <span>2023-2027</span>
-        <span>GPA: 3.11/4</span>
-        <span>CET6: 619</span>
-      </div>
-    </div>
-  </article>
-</div>
+<div id="education-list-root"></div>
 
 #### Research Interests
 <div class="research-tags">
