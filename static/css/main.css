@@ -380,7 +380,7 @@ section .main-body b {
     margin: 0;
     color: var(--text-warm);
     font-family: "Mulish", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    font-size: 1.12rem;
+    font-size: 1.2rem;
     line-height: 1.45;
     font-weight: 900;
 }
