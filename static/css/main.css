@@ -343,7 +343,7 @@ section .main-body b {
     display: grid;
     grid-template-columns: 6.5rem minmax(0, 1fr);
     gap: 1.15rem;
-    align-items: start;
+    align-items: center;
     padding: 1.15rem 1.2rem;
     background: var(--card-bg);
     border: 1px solid transparent;
@@ -362,8 +362,9 @@ section .main-body b {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 2rem;
-    padding: 0.25rem 0.7rem;
+    width: 100%;
+    min-height: 3.2rem;
+    padding: 0.4rem 0.8rem;
     border-radius: 4px;
     background: var(--conference-tag-bg);
     color: #ffffff;
