@@ -80,6 +80,45 @@ body.preview-open {
     pointer-events: none;
 }
 
+.site-loading .top-section-content,
+.site-loading #avatar,
+.site-loading #sections > section,
+.site-loading .bg-bottom {
+    opacity: 0;
+    transform: translateY(18px);
+}
+
+.site-ready .top-section-content,
+.site-ready #avatar,
+.site-ready #sections > section,
+.site-ready .bg-bottom {
+    animation: content-reveal 860ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.site-ready #avatar {
+    animation-delay: 90ms;
+}
+
+.site-ready #sections > section:nth-child(1) {
+    animation-delay: 160ms;
+}
+
+.site-ready #sections > section:nth-child(2) {
+    animation-delay: 230ms;
+}
+
+.site-ready #sections > section:nth-child(3) {
+    animation-delay: 300ms;
+}
+
+.site-ready #sections > section:nth-child(4) {
+    animation-delay: 370ms;
+}
+
+.site-ready .bg-bottom {
+    animation-delay: 440ms;
+}
+
 .skeleton-block {
     position: relative;
     overflow: hidden;
@@ -135,6 +174,18 @@ body.preview-open {
 @keyframes skeleton-shimmer {
     100% {
         transform: translateX(100%);
+    }
+}
+
+@keyframes content-reveal {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
@@ -446,6 +497,19 @@ section .main-body b {
     }
 
     .skeleton-block::after {
+        animation: none;
+    }
+
+    .site-loading .top-section-content,
+    .site-loading #avatar,
+    .site-loading #sections > section,
+    .site-loading .bg-bottom,
+    .site-ready .top-section-content,
+    .site-ready #avatar,
+    .site-ready #sections > section,
+    .site-ready .bg-bottom {
+        opacity: 1;
+        transform: none;
         animation: none;
     }
 }
