@@ -77,12 +77,12 @@ assert.doesNotMatch(index, /skeleton-avatar/, 'avatar should not use skeleton pl
 assert.doesNotMatch(mainCss, /\.skeleton-nav\b/, 'navbar skeleton CSS should not be kept');
 assert.doesNotMatch(mainCss, /\.skeleton-hero\b/, 'hero text skeleton CSS should not be kept');
 assert.doesNotMatch(mainCss, /\.skeleton-avatar\b/, 'avatar skeleton CSS should not be kept');
-assert.match(mainCss, /\.page-skeleton\s*\{[\s\S]*top:\s*25rem/, 'section skeleton should start below the real hero area');
-assert.match(mainCss, /\.page-skeleton\s*\{[\s\S]*padding-top:\s*2\.4rem/, 'section skeleton placeholders should sit one text line lower');
-assert.match(mainCss, /\.site-loading \.top-section\s*\{[\s\S]*linear-gradient/, 'hero background should keep a loading placeholder');
-assert.match(mainCss, /\.site-loading \.top-section::after\s*\{[\s\S]*animation:\s*skeleton-shimmer/, 'hero background placeholder should shimmer while loading');
+assert.match(mainCss, /\.page-skeleton\s*\{[\s\S]*top:\s*0/, 'loading cover should start at the top of the viewport');
+assert.match(mainCss, /\.page-skeleton\s*\{[\s\S]*background:\s*#000000/, 'loading cover should hide unloaded assets behind black');
+assert.match(mainCss, /\.page-skeleton\s*\{[\s\S]*z-index:\s*30000/, 'loading cover should sit above all page content');
+assert.match(mainCss, /\.site-loading \.top-section\s*\{[\s\S]*background:\s*#000000/, 'hero background should stay black while loading');
+assert.match(mainCss, /\.site-loading \.top-section::after\s*\{[\s\S]*display:\s*none/, 'hero loading state should not show a light shimmer');
 assert.match(index, /id="page-top-title"[^>]*>\s*&nbsp;\s*<\/a>/, 'navbar brand should reserve initial height before config loads');
-assert.match(mainCss, /\.page-skeleton\s*\{[\s\S]*z-index:\s*8000/, 'section skeleton should stay below the avatar layer');
 assert.match(mainCss, /#avatar\s*\{[\s\S]*z-index:\s*9000/, 'avatar should stay above the section skeleton while loading');
 assert.match(mainCss, /\.skeleton-block\s*\{[\s\S]*max-width:\s*100%/, 'skeleton blocks should never overflow their container');
 assert.match(mainCss, /\.skeleton-line-long\s*\{[\s\S]*width:\s*100%/, 'long skeleton lines should shrink with the content container');
