@@ -195,6 +195,16 @@ body.preview-open {
     border-top: 1px solid var(--card-border);
 }
 
+body:not([data-page="home"]) .top-section,
+body:not([data-page="home"]) #avatar,
+#sections > section[hidden] {
+    display: none !important;
+}
+
+body:not([data-page="home"]) #sections {
+    padding-top: 4.5rem;
+}
+
 .top-section {
     position: relative;
     padding: 10rem 0;
@@ -367,6 +377,7 @@ section {
 
 section .main-body a {
     color: var(--button-text);
+    overflow-wrap: anywhere;
 }
 
 section .main-body strong,

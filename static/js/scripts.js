@@ -8,6 +8,8 @@ const education_file = 'education.yml'
 const allowedUrlProtocols = ['http:', 'https:', 'mailto:', 'tel:'];
 const configOnlyKeys = ['nav', 'sections', 'backgrounds', 'background-interval-ms', 'background-overlay'];
 const themeStorageKey = 'homepage-theme';
+const pageQueryKey = 'page';
+let configuredSections = [];
 
 function getStoredTheme() {
     try {
@@ -113,6 +115,9 @@ function renderNavigation(navItems) {
         link.className = 'nav-link me-lg-3';
         link.href = item.href;
         link.textContent = decodeText(item.text);
+        if (item.page) {
+            link.dataset.page = item.page;
+        }
 
         listItem.appendChild(link);
         navbarItems.appendChild(listItem);
@@ -149,16 +154,98 @@ function normalizeSections(sections) {
         .filter(Boolean);
 }
 
+function getPageHref(pageId) {
+    return '?page=' + encodeURIComponent(pageId);
+}
+
 function getNavigationItems(yml) {
     const sections = normalizeSections(yml.sections);
     if (sections.length > 0) {
         return sections.map((section) => ({
             text: section.nav,
-            href: section.href,
+            href: getPageHref(section.id),
+            page: section.id,
         }));
     }
 
     return Array.isArray(yml.nav) ? yml.nav : [];
+}
+
+function getRequestedPageId(sections) {
+    const validIds = new Set(sections.map((section) => section.id));
+    const requested = new URLSearchParams(window.location.search).get(pageQueryKey);
+
+    if (requested && validIds.has(requested)) {
+        return requested;
+    }
+
+    return validIds.has('home') ? 'home' : sections[0]?.id || '';
+}
+
+function updatePageUrl(pageId) {
+    const url = new URL(window.location.href);
+    url.searchParams.set(pageQueryKey, pageId);
+    url.hash = '';
+    window.history.pushState({ pageId }, '', url);
+}
+
+function setActivePage(pageId, options = {}) {
+    if (!pageId || configuredSections.length === 0) {
+        return;
+    }
+
+    const validIds = new Set(configuredSections.map((section) => section.id));
+    const nextPageId = validIds.has(pageId) ? pageId : getRequestedPageId(configuredSections);
+
+    document.body.dataset.page = nextPageId;
+
+    configuredSections.forEach((section) => {
+        const element = document.getElementById(section.id);
+        if (element) {
+            element.hidden = section.id !== nextPageId;
+        }
+    });
+
+    document.querySelectorAll('#navbar-items .nav-link[data-page]').forEach((link) => {
+        const isActive = link.dataset.page === nextPageId;
+        link.classList.toggle('active', isActive);
+        if (isActive) {
+            link.setAttribute('aria-current', 'page');
+        } else {
+            link.removeAttribute('aria-current');
+        }
+    });
+
+    if (options.updateUrl !== false) {
+        updatePageUrl(nextPageId);
+    }
+
+    window.scrollTo({ top: 0, behavior: options.smooth ? 'smooth' : 'auto' });
+}
+
+function initPageRouting(sections) {
+    configuredSections = sections;
+    setActivePage(getRequestedPageId(sections), { updateUrl: false });
+
+    const pageTitle = document.getElementById('page-top-title');
+    if (pageTitle) {
+        pageTitle.href = getPageHref('home');
+        pageTitle.addEventListener('click', (event) => {
+            event.preventDefault();
+            setActivePage('home', { smooth: true });
+        });
+    }
+
+    document.querySelectorAll('#navbar-items .nav-link[data-page]').forEach((link) => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+            setActivePage(link.dataset.page, { smooth: true });
+        });
+    });
+
+    window.addEventListener('popstate', () => {
+        setActivePage(getRequestedPageId(configuredSections), { updateUrl: false });
+    });
 }
 
 function activateScrollSpy() {
@@ -870,8 +957,8 @@ window.addEventListener('DOMContentLoaded', event => {
 
             renderNavigation(getNavigationItems(yml));
             renderSections(sections);
+            initPageRouting(sections);
             initBackgroundSlideshow(yml);
-            activateScrollSpy();
             bindResponsiveNavbar();
 
             return Promise.all(getConfiguredSections(yml).map(loadMarkdownSection));
