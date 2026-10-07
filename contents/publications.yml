@@ -9,7 +9,7 @@ publications:
     year: 2026
     venue_tag: "TC"
     type: journal
-    status: under-review
+    status: accepted
     image: "static/assets/img/publications/flexvector-architecture.png"
     image_alt: "FlexVector architecture thumbnail"
     featured: true
