@@ -1,6 +1,8 @@
 # Add new news items by copying one item below and editing the fields.
 # The text field supports simple inline HTML such as <strong>...</strong>.
 news:
+  - date: "Oct 7, 2026"
+    text: "Our paper <strong>FlexVector</strong> has been accepted by <strong>IEEE Transactions on Computers (TC)</strong>."
   - date: "Apr 2026"
     text: "Preprint available on arXiv: <strong>FlexVector</strong>, a SpMM vector processor for GCNs on varying-sparsity graphs."
   - date: "2025"
