@@ -517,19 +517,22 @@ section .main-body b {
 }
 
 #news,
-#publications {
+#publications,
+#awards {
     background: var(--section-bg) !important;
     color: var(--text-main);
 }
 
 #news header h2,
-#publications header h2 {
+#publications header h2,
+#awards header h2 {
     color: var(--h-title-color);
     margin-bottom: 1.5rem;
 }
 
 #news .main-body,
-#publications .main-body {
+#publications .main-body,
+#awards .main-body {
     font-size: 1rem;
     line-height: 1.6;
 }
@@ -571,7 +574,8 @@ section .main-body b {
     font-weight: 600;
 }
 
-.publication-list {
+.publication-list,
+.award-list {
     display: grid;
     gap: 1.4rem;
 }
@@ -641,7 +645,8 @@ section .main-body b {
     color: var(--button-text);
 }
 
-.publication-card {
+.publication-card,
+.award-card {
     display: grid;
     grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
     gap: 1.6rem;
@@ -655,7 +660,9 @@ section .main-body b {
 .publication-card:hover,
 .publication-card:focus-within,
 .publication-card-featured:hover,
-.publication-card-featured:focus-within {
+.publication-card-featured:focus-within,
+.award-card:hover,
+.award-card:focus-within {
     border-color: var(--card-border-strong);
     box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14);
     transform: translateY(-1px);
@@ -700,17 +707,20 @@ button.publication-thumb:focus {
     letter-spacing: 0;
 }
 
-.publication-content {
+.publication-content,
+.award-content {
     min-width: 0;
 }
 
-.publication-heading {
+.publication-heading,
+.award-heading {
     display: flex;
     gap: 0.8rem;
     align-items: flex-start;
 }
 
-.publication-tag {
+.publication-tag,
+.award-prize {
     flex: 0 0 auto;
     display: inline-flex;
     align-items: center;
@@ -737,7 +747,8 @@ button.publication-thumb:focus {
     background: var(--journal-tag-bg);
 }
 
-.publication-heading h3 {
+.publication-heading h3,
+.award-heading h3 {
     margin: 0;
     color: var(--text-warm);
     font-family: "Mulish", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -747,7 +758,8 @@ button.publication-thumb:focus {
 }
 
 .publication-authors,
-.publication-venue {
+.publication-venue,
+.award-details {
     margin: 0.55rem 0 0;
     color: var(--text-muted);
     font-size: 1.02rem;
@@ -829,6 +841,29 @@ button.publication-thumb:focus {
     font-weight: 700;
 }
 
+.award-card {
+    align-items: center;
+}
+
+.award-emblem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 2.55 / 1;
+    border-radius: 6px;
+    background: rgba(224, 182, 66, 0.12);
+    color: var(--journal-tag-bg);
+}
+
+.award-emblem svg {
+    width: 4rem;
+    height: 4rem;
+}
+
+.award-details strong {
+    color: var(--text-warm);
+}
+
 .image-preview {
     position: fixed;
     inset: 0;
@@ -878,7 +913,8 @@ button.publication-thumb:focus {
         gap: 0.25rem;
     }
 
-    .publication-card {
+    .publication-card,
+    .award-card {
         grid-template-columns: 1fr;
         padding: 1rem;
     }
@@ -903,12 +939,14 @@ button.publication-thumb:focus {
         flex: 1 1 auto;
     }
 
-    .publication-heading {
+    .publication-heading,
+    .award-heading {
         flex-wrap: wrap;
         gap: 0.65rem;
     }
 
-    .publication-heading h3 {
+    .publication-heading h3,
+    .award-heading h3 {
         flex-basis: 100%;
         font-size: 1.1rem;
     }
