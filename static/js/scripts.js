@@ -521,6 +521,7 @@ function createEducationCard(education) {
     meta.className = 'education-meta';
 
     badge.textContent = education.degree || '';
+    badge.dataset.degree = education.degree || '';
     institution.textContent = education.institution || 'Institution';
     major.textContent = education.major || '';
 

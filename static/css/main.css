@@ -426,6 +426,10 @@ section .main-body b {
     line-height: 1;
 }
 
+.education-badge[data-degree="FYP"] {
+    background: #2563eb;
+}
+
 .education-content {
     min-width: 0;
 }
