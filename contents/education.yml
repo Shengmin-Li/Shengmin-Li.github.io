@@ -1,6 +1,11 @@
-# Add new education items by copying one item below and editing the fields.
+# Add new education or language items by copying one item below and editing the fields.
 # meta is optional and renders as small tags.
 education:
+  - degree: "English"
+    institution: "Language Proficiency"
+    meta:
+      - "CET6: 619"
+      - "TOEFL: 5.0/6.0"
   - degree: "FYP"
     institution: "City University of Hong Kong Qingdao Research Institute"
     major: "Final Year Project"
@@ -11,6 +16,4 @@ education:
     major: "Microelectronic Science and Engineering"
     meta:
       - "2023-2027"
-      - "GPA: 3.11/4"
-      - "CET6: 619"
-      - "TOEFL: 5.0/6.0"
+      - "GPA: 3.08/4"

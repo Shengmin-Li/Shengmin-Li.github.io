@@ -9,7 +9,7 @@ He is currently an undergraduate student in Microelectronics Science and Enginee
 - Email: milishengmin@outlook.com
 - Email: milishengmin_@mail.scut.edu.cn
 
-#### Education
+#### Education & Language
 <div id="education-list-root"></div>
 
 #### Research Interests
