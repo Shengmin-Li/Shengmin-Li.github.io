@@ -1,6 +1,8 @@
 # Add new news items by copying one item below and editing the fields.
 # The text field supports simple inline HTML such as <strong>...</strong>.
 news:
+  - date: "Oct 21, 2026"
+    text: "Received my TOEFL score: <strong>5.0/6.0</strong>."
   - date: "Oct 7, 2026"
     text: "Our paper <strong>FlexVector</strong> has been accepted by <strong>IEEE Transactions on Computers (TC)</strong>."
   - date: "Apr 2026"
